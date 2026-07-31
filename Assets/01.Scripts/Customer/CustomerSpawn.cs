@@ -1,0 +1,17 @@
+using UnityEngine;
+
+// 손님 SpawnPoint에서 스폰
+public class CustomerSpawn : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
