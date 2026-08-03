@@ -9,5 +9,6 @@ public enum CustomerState
     MovingToSeat,
     Sitting,
     Returning,
+    MovingToExit,
     Exiting
 }

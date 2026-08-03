@@ -10,8 +10,8 @@ public class CustomerController : MonoBehaviour
     public CustomerMovement movement;
     private Seat currentSeat;
 
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform entrancePoint;
+    private Transform spawnPoint;
+    //[SerializeField] private Transform entrancePoint;
 
     //[SerializeField] private Transform exitPoint;
 
@@ -21,12 +21,10 @@ public class CustomerController : MonoBehaviour
 
         movement.OnArrived += HandleArrived;
     }
-    public void Initialize(Transform spawnPoint, Transform entrancePoint)
+    public void Initialize(Transform newSpawnPoint)
     {
-        this.spawnPoint = spawnPoint;
-        this.entrancePoint = entrancePoint;
+        spawnPoint = newSpawnPoint;
     }
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -67,6 +65,9 @@ public class CustomerController : MonoBehaviour
             case CustomerState.Returning:
                 ReturnTray();
                 break;
+            case CustomerState.MovingToExit:
+                MoveToExit();
+                break;
             case CustomerState.Exiting:
                 ExitShop();
                 break;
@@ -77,14 +78,16 @@ public class CustomerController : MonoBehaviour
     {
         Debug.Log("입장");
 
-        if (entrancePoint == null)
+        Furniture entrance = GetFurniture(FurnitureType.Entrance);
+
+        if (entrance == null)
         {
             Debug.LogError("EntrancePoint가 없습니다.", this);
             ChangeState(CustomerState.Exiting);
             return;
         }
 
-        movement.MoveTo(entrancePoint);
+        movement.MoveTo(entrance.CustomerPoint);
     }
     private void MoveToCounter()
     {
@@ -160,7 +163,7 @@ public class CustomerController : MonoBehaviour
     // 임시
     private IEnumerator SitRoutine()
     {
-        yield return new WaitForSeconds(50f);
+        yield return new WaitForSeconds(10f);
 
         ChangeState(CustomerState.Returning);
     }
@@ -179,10 +182,20 @@ public class CustomerController : MonoBehaviour
 
         movement.MoveTo(returnDesk.CustomerPoint);
     }
+    private void MoveToExit()
+    {
+        Debug.Log("입구로 이동");
+
+        ReleaseSeat();
+
+        Furniture entrance = GetFurniture(FurnitureType.Entrance);
+        movement.MoveTo(entrance.CustomerPoint);
+    }
 
     private void ExitShop()
     {
         Debug.Log("퇴장");
+        ReleaseSeat();
 
         movement.MoveTo(spawnPoint);
     }
@@ -205,13 +218,25 @@ public class CustomerController : MonoBehaviour
                 break;
 
             case CustomerState.Returning:
+                ChangeState(CustomerState.MovingToExit);
+                break;
+
+            case CustomerState.MovingToExit:
                 ChangeState(CustomerState.Exiting);
                 break;
+
             case CustomerState.Exiting:
                 Destroy(gameObject);
                 break;
         }
     }
+
+    // 필요한 가구 FurnitureManager에서 가져오기
+    private Furniture GetFurniture(FurnitureType type)
+    {
+        return FurnitureManager.Instance.GetFurniture(type);
+    }
+
     private void ReleaseSeat()
     {
         if (currentSeat == null)
@@ -221,10 +246,6 @@ public class CustomerController : MonoBehaviour
         currentSeat = null;
     }
 
-    private void OnEnable()
-    {
-        CustomerManager.Instance.Register(this);
-    }
 
     private void OnDisable()
     {

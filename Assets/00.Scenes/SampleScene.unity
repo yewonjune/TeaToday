@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b752e1a26b3e7944facb79e2491e8b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Furniture
-  furnitureType: 1
+  furnitureType: 2
   customerPoint: {fileID: 171303227}
 --- !u!1 &278751357
 GameObject:
@@ -4856,7 +4856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a6a4e0a4ffdcf40abf40f75a77f5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Table
-  furnitureType: 2
+  furnitureType: 3
   customerPoint: {fileID: 1211464854}
   seats:
   - {fileID: 1732809627}
@@ -5907,7 +5907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0568f3084517c4597da07e8962f20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerSpawn
-  customerPrefab: {fileID: 2017576501}
+  customerPrefab: {fileID: 8768633106408923107, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
   spawnPoint: {fileID: 985513130}
   entrancePoint: {fileID: 2125373214}
   spawnInterval: 5
@@ -6017,7 +6017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b752e1a26b3e7944facb79e2491e8b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Furniture
-  furnitureType: 0
+  furnitureType: 1
   customerPoint: {fileID: 713169821}
 --- !u!1 &1796342251
 GameObject:
@@ -6290,86 +6290,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1732809626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2017576500
-PrefabInstance:
+--- !u!1 &1974077809
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 319139123262954237, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 319139123262954237, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.91245
-      objectReference: {fileID: 0}
-    - target: {fileID: 319139123262954237, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 319139123262954237, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 319139123262954237, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 319139123262954237, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 319139123262954237, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 319139123262954237, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 319139123262954237, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 319139123262954237, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495831940737396218, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: m_Name
-      value: Customer
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768633106408923107, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: exitPoint
-      value: 
-      objectReference: {fileID: 2125373214}
-    - target: {fileID: 8768633106408923107, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: spawnPoint
-      value: 
-      objectReference: {fileID: 985513130}
-    - target: {fileID: 8768633106408923107, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-      propertyPath: entrancePoint
-      value: 
-      objectReference: {fileID: 2125373214}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
---- !u!114 &2017576501 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8768633106408923107, guid: 6b8182b5d6c937440860efa592577d16, type: 3}
-  m_PrefabInstance: {fileID: 2017576500}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d62903af915de2e41b4a74571ebae611, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CustomerController
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1974077810}
+  m_Layer: 0
+  m_Name: CustomerPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1974077810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974077809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.42, y: 0.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2125373214}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2088030996
 GameObject:
   m_ObjectHideFlags: 0
@@ -6590,6 +6541,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125373214}
+  - component: {fileID: 2125373215}
   m_Layer: 0
   m_Name: Entrance
   m_TagString: Untagged
@@ -6609,9 +6561,24 @@ Transform:
   m_LocalPosition: {x: 5.92, y: -1.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1974077810}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2125373215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125373213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b752e1a26b3e7944facb79e2491e8b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Furniture
+  furnitureType: 0
+  customerPoint: {fileID: 1974077810}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6630,4 +6597,3 @@ SceneRoots:
   - {fileID: 1732809626}
   - {fileID: 349267095}
   - {fileID: 13612862}
-  - {fileID: 2017576500}

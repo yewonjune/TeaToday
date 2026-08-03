@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6495831940737396218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.17, y: -1.1, z: 0}
+  m_LocalPosition: {x: -0.98136, y: -0.66222, z: 0}
   m_LocalScale: {x: 1, y: 1.5824, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerController
   movement: {fileID: 2994238749591959550}
-  exitPoint: {fileID: 0}
+  spawnPoint: {fileID: 0}
 --- !u!114 &2994238749591959550
 MonoBehaviour:
   m_ObjectHideFlags: 0

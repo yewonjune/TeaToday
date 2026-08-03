@@ -6,7 +6,7 @@ public class CustomerSpawn : MonoBehaviour
 {
     [SerializeField] private CustomerController customerPrefab;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform entrancePoint;
+  //  [SerializeField] private Transform entrancePoint;
 
     [SerializeField] private float spawnInterval = 5f;
     [SerializeField] private int maxCustomer = 8;
@@ -46,17 +46,9 @@ public class CustomerSpawn : MonoBehaviour
             return;
         }
 
-        if (entrancePoint == null)
-        {
-            Debug.LogError("[CustomerSpawn] EntrancePoint가 없습니다.");
-            return;
-        }
-
         if (CustomerManager.Instance.CustomerCount >= maxCustomer)
             return;
 
-        if (CustomerManager.Instance.CanSpawnCustomer())
-            return;
 
         CustomerController customer = Instantiate(
             customerPrefab,
@@ -64,6 +56,6 @@ public class CustomerSpawn : MonoBehaviour
             Quaternion.identity);
 
         // 생성된 손님에게 씬의 위치 전달
-        customer.Initialize(spawnPoint, entrancePoint);
+        customer.Initialize(spawnPoint);
     }
 }
