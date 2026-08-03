@@ -1,7 +1,6 @@
 using UnityEngine;
 
-//입구, 카운터, 반납구, 출구 위치 관리
-public class CustomerPointManager : MonoBehaviour
+public class Seat : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

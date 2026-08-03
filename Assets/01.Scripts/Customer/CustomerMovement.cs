@@ -10,14 +10,14 @@ public class CustomerMovement : MonoBehaviour
 
     private Transform target;
 
-    public bool isMoving {  get; private set; }
+    public bool IsMoving {  get; private set; }
 
     public event Action OnArrived;
 
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving || target == null)
+        if (!IsMoving || target == null)
             return;
 
         Move();
@@ -29,5 +29,27 @@ public class CustomerMovement : MonoBehaviour
             transform.position,
             target.position,
             moveSpeed*Time.deltaTime);
+
+        float distance = Vector2.Distance(transform.position, target.position);
+
+        if(distance <= arriveDistance)
+        {
+            transform.position = target.position;
+            IsMoving = false;
+            OnArrived?.Invoke();
+        }
+    }
+
+    //이동 시작
+    public void MoveTo(Transform destination)
+    {
+        target = destination;
+        IsMoving = true;
+    }
+
+    //이동 중지
+    public void Stop()
+    {
+        IsMoving = false;
     }
 }

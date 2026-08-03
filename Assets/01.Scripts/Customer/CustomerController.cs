@@ -13,6 +13,8 @@ public class CustomerController : MonoBehaviour
     {
         movement = GetComponent<CustomerMovement>();
         order = GetComponent<CustomerOrder>();
+
+        movement.OnArrived += HandleArrived;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -54,6 +56,8 @@ public class CustomerController : MonoBehaviour
     private void EnterShop()
     {
         Debug.Log("¿‘¿Â");
+
+        //movement.MoveTo(CustomerPointManager.Instance.OrderPoint);
     }
     private void Order()
     {
@@ -79,5 +83,23 @@ public class CustomerController : MonoBehaviour
     private void ExitShop()
     {
         Debug.Log("≈¿Â");
+    }
+
+    private void HandleArrived()
+    {
+        switch (CurrentState)
+        {
+            case CustomerState.Entering:
+                ChangeState(CustomerState.Ordering);
+                break;
+
+            case CustomerState.MovingToSeat:
+                ChangeState(CustomerState.Sitting);
+                break;
+
+            case CustomerState.Returning:
+                ChangeState(CustomerState.Exiting);
+                break;
+        }
     }
 }
