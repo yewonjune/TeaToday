@@ -20,4 +20,17 @@ public class Furniture : MonoBehaviour
     {
         FurnitureManager.Instance?.Unregister(this);
     }
+
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (customerPoint == null)
+        {
+            Debug.LogWarning(
+                $"[{name}] CustomerPoint가 연결되지 않았습니다.",
+                this);
+        }
+    }
+#endif
 }

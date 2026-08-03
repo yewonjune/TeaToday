@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
@@ -18,6 +19,25 @@ public class FurnitureManager : MonoBehaviour
         }
 
         Instance = this;
+
+        RegisterSceneFurnitures();
+    }
+
+    private void RegisterSceneFurnitures()
+    {
+        Furniture[] sceneFurnitures =
+             FindObjectsByType<Furniture>(
+               FindObjectsInactive.Exclude,
+                   FindObjectsSortMode.None);
+
+        foreach (Furniture furniture in sceneFurnitures)
+        {
+            Register(furniture);
+        }
+
+        Debug.Log(
+            $"[FurnitureManager] 등록된 전체 가구 수: {furnitures.Count}");
+
     }
 
     #region Register

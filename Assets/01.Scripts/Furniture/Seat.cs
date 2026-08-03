@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class Seat : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Transform customerPoint;
+
+    private CustomerController currentCustomer;
+    public Transform CustomerPoint => customerPoint;
+
+    public bool IsOccupied => currentCustomer != null;
+
+    public void Reserve(CustomerController customer)
     {
-        
+        currentCustomer = customer;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Release()
     {
-        
+        currentCustomer = null;
     }
 }
