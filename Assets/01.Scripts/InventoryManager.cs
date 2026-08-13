@@ -21,7 +21,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     // 아이템 추가
-    public void Additem(int itemId, int amount)
+    public void AddItem(int itemId, int amount)
     {
         if (amount <= 0)
             return;
