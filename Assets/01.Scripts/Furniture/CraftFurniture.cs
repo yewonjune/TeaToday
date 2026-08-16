@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class CraftFurniture : Furniture
 {
     [SerializeField] private Button craftButton;
-    [SerializeField] private CraftingUI craftingUI;
 
     protected override void OnEnable()
     {
@@ -24,7 +23,7 @@ public class CraftFurniture : Furniture
 
     private void OpenCraftPanel()
     {
-        if (craftingUI == null)
+        if (CraftingUI.Instance == null)
         {
             Debug.LogError($"[{name}] CraftingUI가 없습니다.");
             return;
@@ -33,11 +32,11 @@ public class CraftFurniture : Furniture
         switch (FurnitureType)
         {
             case FurnitureType.DrinkCraftMachine:
-                craftingUI.Open(ProductType.Drink);
+                CraftingUI.Instance.Open(ProductType.Drink);
                 break;
 
             case FurnitureType.FoodCraftMachine:
-                craftingUI.Open(ProductType.Food);
+                CraftingUI.Instance.Open(ProductType.Food);
                 break;
 
             default:

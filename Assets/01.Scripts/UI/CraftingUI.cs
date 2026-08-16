@@ -6,6 +6,11 @@ using static NUnit.Framework.Internal.OSPlatform;
 
 public class CraftingUI : MonoBehaviour
 {
+    public static CraftingUI Instance { get; private set; }
+
+    [Header("Panel")]
+    [SerializeField] private GameObject productCraftPanel;
+
     [Header("惑前 格废")]
     [SerializeField] private Transform content;
     [SerializeField] private ProductSlotUI productSlotPrefab;
@@ -25,12 +30,14 @@ public class CraftingUI : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         craftButton.onClick.AddListener(CraftSelectedProduct);
     }
 
     public void Open(ProductType productType)
     {
-        gameObject.SetActive(true);
+        productCraftPanel.SetActive(true);
 
         // 力格 函版
         titleText.text =
@@ -54,6 +61,11 @@ public class CraftingUI : MonoBehaviour
 
     //    craftButton.onClick.AddListener(CraftSelectedProduct);
     //}
+
+    public void Close()
+    {
+        productCraftPanel.SetActive(false);
+    }
 
     private void CreateProductSlots(ProductType productType)
     {
