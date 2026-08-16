@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4471f26fa9f737d429ad0eabf79bb49d, type: 3}
+  m_Name: 1002_BlackTea
+  m_EditorClassIdentifier: Assembly-CSharp::ProductData
+  productId: 1002
+  productName: "\uD64D\uCC28"
+  productType: 0
+  icon: {fileID: -328211769630707867, guid: 2241eaf8c8866e641bd68bf2f662ac2b, type: 3}
+  materialCost: 3
+  craftTime: 3
+  sellPrice: 14
+  sellInterval: 3

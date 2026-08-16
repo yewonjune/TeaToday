@@ -6,5 +6,7 @@ public enum FurnitureType
     Counter,
     ReturnDesk,
     Table,
+    DrinkCraftMachine,
+    FoodCraftMachine,
     Decoration
 }
