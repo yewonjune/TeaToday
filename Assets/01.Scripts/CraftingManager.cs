@@ -1,18 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-// 음료/음식 제작관리
+// 재료 확인/차감 + 제작 전체 흐름 시작
 public class CraftingManager : MonoBehaviour
 {
     public static CraftingManager Instance { get; private set; }
 
     // 다향조각 ID
     private const int DAHYANG_PIECE_ID = 3001;
-
-    private bool isCrafting;
-    
-    // 현재 제작 중인지 확인
-    public bool IsCrafting => isCrafting;
 
     private void Awake()
     {
@@ -26,7 +21,7 @@ public class CraftingManager : MonoBehaviour
     }
 
     // 상품제작 시도
-    public void TryCraft(ProductData product)
+    public void TryCraft(ProductData product, CraftFurniture machine)
     {
         if(product == null)
         {
@@ -34,8 +29,14 @@ public class CraftingManager : MonoBehaviour
             return;
         }
 
+        if (machine == null)
+        {
+            Debug.LogError("[CraftingManager] 제작 머신이 없습니다.");
+            return;
+        }
+
         // 이미 다른 상품을 제작 중
-        if (isCrafting)
+        if (machine.IsCrafting)
         {
             Debug.Log("[CraftingManager] 이미 제작 중입니다.");
             return;
@@ -51,24 +52,29 @@ public class CraftingManager : MonoBehaviour
         }
 
         InventoryManager.Instance.RemoveItem(DAHYANG_PIECE_ID, product.materialCost);
-
-        StartCoroutine(Craft(product));
+        
+        // UI닫기
+        CraftingUI.Instance.Close();
+        
+        // 제작 시작
+        StartCoroutine(Craft(product, machine));
 
     }
 
     // 상품제작
-    private IEnumerator Craft(ProductData product)
+    private IEnumerator Craft(ProductData product, CraftFurniture machine)
     {
-        isCrafting = true;
+        machine.BeginCraft(product);
 
         Debug.Log($"[CraftingManager] {product.productName} 제작 시작");
 
         yield return new WaitForSeconds(product.craftTime);
 
+        // 완성품 지급
         InventoryManager.Instance.AddItem(product.productId, 1);
 
         Debug.Log($"[CraftingManager] {product.productName} 제작 완료");
 
-        isCrafting = false;
+        machine.FinishCraft();
     }
 }

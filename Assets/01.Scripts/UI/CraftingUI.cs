@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static NUnit.Framework.Internal.OSPlatform;
 
+//어떤 상품을 고르고 어떤 머신에서 만들지 전달
 public class CraftingUI : MonoBehaviour
 {
     public static CraftingUI Instance { get; private set; }
@@ -27,6 +28,7 @@ public class CraftingUI : MonoBehaviour
     [SerializeField] private Button craftButton;
 
     private ProductData selectedProduct;
+    private CraftFurniture currentMachine;
 
     private void Awake()
     {
@@ -35,8 +37,10 @@ public class CraftingUI : MonoBehaviour
         craftButton.onClick.AddListener(CraftSelectedProduct);
     }
 
-    public void Open(ProductType productType)
+    public void Open(ProductType productType, CraftFurniture machine)
     {
+        currentMachine = machine;
+
         productCraftPanel.SetActive(true);
 
         // 제목 변경
@@ -107,6 +111,6 @@ public class CraftingUI : MonoBehaviour
             return;
         }
 
-        CraftingManager.Instance.TryCraft(selectedProduct);
+        CraftingManager.Instance.TryCraft(selectedProduct, currentMachine);
     }
 }

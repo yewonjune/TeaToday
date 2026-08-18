@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class CraftTest : MonoBehaviour
 {
     [SerializeField] private ProductData product;
+    [SerializeField] private CraftFurniture currentMachine;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class CraftTest : MonoBehaviour
     {
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            CraftingManager.Instance.TryCraft(product);
+            CraftingManager.Instance.TryCraft(product, currentMachine);
         }
     }
     
